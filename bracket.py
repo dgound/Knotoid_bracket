@@ -263,8 +263,9 @@ def find_endpoint_regions(gc,regions_list):
 
 def find_path(comp_list, graph,outside_region,end_regs):
     nested_comps=[]
-    sum_path1,sum_path2 = 0 , 0
+   
     for i in range(len(graph)):
+        sum_path1,sum_path2 = 0 , 0
         if comp_list[i]==1:
             nested_comps.append(0)
         elif comp_list[i]>1:
@@ -608,13 +609,9 @@ def main(gc,extented):
     remaining_crosses= [ x for x in pd]
 
     stat_lst=state_list(brack,remaining_crosses,crs_sgn)
-        
     crs_reg=crossing_regions(pd,regions_list)
-    
     graph_list = build_graph(stat_lst,crs_reg)
-    
     comp_list= component_counter(graph_list,stat_lst)
-    
     if planar:
         print ('Evaluating planar knotoid.')
         nest_comps=find_path(comp_list,graph_list,outside_region,end_regs)
@@ -668,6 +665,7 @@ def str_to_gcode(gcodestr):
     Main part
     
 '''
+
 
 if __name__ == "__main__":
 
